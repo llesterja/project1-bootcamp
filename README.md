@@ -1,6 +1,15 @@
-# Rocket Academy Coding Bootcamp: Project 1: Frontend App
+# Rocket Academy Coding Bootcamp: Project 1: Frontend App 
 
 https://bc.rocketacademy.co/1-frontend/1.p-frontend-app
+
+## Lester's idea 
+
+## Technologies used
+
+- React
+- Bootstrap 
+- TMDB API [https://developer.themoviedb.org/docs](link to api ref)
+- OMDB API [http://www.omdbapi.com/](link to api ref)
 
 ## Available Scripts
 
