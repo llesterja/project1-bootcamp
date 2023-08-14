@@ -1,6 +1,7 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import {Modal} from "react-bootstrap";
-import axios from 'axios';
+import HorizontalGallery from '../HorizontalGallery';
+
 
 const MovieDetails = (props) =>{
 
@@ -13,7 +14,7 @@ const MovieDetails = (props) =>{
         aria-labelledby="example-modal-sizes-title-lg"
     >
       {
-      props.selectedMovie &&
+      props.selectedMovie && props.similarMovie &&
       (
       <>
         <Modal.Header closeButton closeVariant='white'>
@@ -24,10 +25,12 @@ const MovieDetails = (props) =>{
         <Modal.Body>
           <img src={'https://image.tmdb.org/t/p/w300'+props.selectedMovie.poster_path} alt='selected movie poster'/>
           <h3>{props.selectedMovie.title}</h3>
-          <p>{props.selectedMovie.release_date}-{"call api to Release dates to add movie certification"}-{props.selectedMovie.runtime} mins</p>
+          <p>{props.selectedMovie.release_date} - {props.movieCertification} - {props.selectedMovie.runtime} mins</p>
+          <p>{props.selectedMovie.genres.map((genre,id)=><>{genre.name} </>)} </p>
           <p>{Math.round(props.selectedMovie.vote_average)/2}/5</p>
           <p>{props.selectedMovie.overview}</p>
-          <p>{"api to Similar"}</p>
+          <HorizontalGallery movies={props.similarMovie} size='w154' title='Similar Movies:'/>
+
         </Modal.Body>
       </>)}
   </Modal>

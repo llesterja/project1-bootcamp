@@ -36,7 +36,9 @@ function App() {
   const [searchMovies,setSearchMovies] = useState([])
   const [modalShow,setModalShow] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  console.log("selected Movie:",selectedMovie)
+  const [similarMovie, setSimilarMovie] = useState(null);
+  const [movieCertification,setMovieCertification] = useState(null);
+
   const getTrendingMovie = async () => {
     try{
       const response = await axios.get(
@@ -72,9 +74,9 @@ function App() {
         <Header title="Whatflix"/>
         <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
-      {searchValue?<HorizontalGallery title='Search Results' movies={searchMovies} setModalShow={setModalShow} setSelectedMovie={setSelectedMovie}/>:<></>}
-      <HorizontalGallery title='Popular' movies={movies} setModalShow={setModalShow} setSelectedMovie={setSelectedMovie}/>
-      <MovieDetails modalShow={modalShow} setModalShow={setModalShow} selectedMovie={selectedMovie} />
+      {searchValue?<HorizontalGallery title='Search Results' movies={searchMovies} setModalShow={setModalShow} setSelectedMovie={setSelectedMovie} setMovieCertification={setMovieCertification} setSimilarMovie={setSimilarMovie} />:<></>}
+      <HorizontalGallery title='Popular' movies={movies} setModalShow={setModalShow} setSelectedMovie={setSelectedMovie} setMovieCertification={setMovieCertification} setSimilarMovie={setSimilarMovie}/>
+      <MovieDetails modalShow={modalShow} setModalShow={setModalShow} selectedMovie={selectedMovie} movieCertification={movieCertification} similarMovie={similarMovie} />
     </div>
 
     
