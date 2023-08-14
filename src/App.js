@@ -33,8 +33,8 @@ function App() {
     //     }
       ]);
   const [searchValue,setSearchValue] = useState('');
-  const [searchMovies,setSearchMovies]=useState([])
-  const [modalShow,setModalShow]=useState(false);
+  const [searchMovies,setSearchMovies] = useState([])
+  const [modalShow,setModalShow] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
   console.log("selected Movie:",selectedMovie)
   const getTrendingMovie = async () => {
@@ -58,7 +58,8 @@ function App() {
     } catch(err){
       console.log(err);
     }
-  }
+  };
+
 
   useEffect(()=>{
     getTrendingMovie();
