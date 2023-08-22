@@ -67,7 +67,7 @@ function App() {
     getTrendingMovie();
     getSearchMovie(searchValue);
   },[searchValue])
-
+  console.log(movieCertification)
   return (
     <div className=" container-fluid">
       <div className="row d-flex align-items-center mt-4 mb-4">
@@ -75,8 +75,11 @@ function App() {
         <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       {searchValue?<HorizontalGallery title='Search Results' movies={searchMovies} setModalShow={setModalShow} setSelectedMovie={setSelectedMovie} setMovieCertification={setMovieCertification} setSimilarMovie={setSimilarMovie} />:<></>}
+      
       <HorizontalGallery title='Popular' movies={movies} setModalShow={setModalShow} setSelectedMovie={setSelectedMovie} setMovieCertification={setMovieCertification} setSimilarMovie={setSimilarMovie}/>
-      <MovieDetails modalShow={modalShow} setModalShow={setModalShow} selectedMovie={selectedMovie} movieCertification={movieCertification} similarMovie={similarMovie} />
+      
+      <MovieDetails modalShow={modalShow} setModalShow={setModalShow} selectedMovie={selectedMovie} movieCertification={movieCertification} similarMovie={similarMovie} setSelectedMovie={setSelectedMovie} setMovieCertification={setMovieCertification} setSimilarMovie={setSimilarMovie}/>
+
     </div>
 
     

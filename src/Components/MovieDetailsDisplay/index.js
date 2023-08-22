@@ -1,6 +1,7 @@
 import React from 'react';
 import {Modal} from "react-bootstrap";
 import HorizontalGallery from '../HorizontalGallery';
+import StarRating from '../StarRating';
 
 
 const MovieDetails = (props) =>{
@@ -28,8 +29,10 @@ const MovieDetails = (props) =>{
           <p>{props.selectedMovie.release_date} - {props.movieCertification} - {props.selectedMovie.runtime} mins</p>
           <p>{props.selectedMovie.genres.map((genre,id)=><>{genre.name} </>)} </p>
           <p>{Math.round(props.selectedMovie.vote_average)/2}/5</p>
+          {/* <StarRating value = {3}/> */}
           <p>{props.selectedMovie.overview}</p>
-          <HorizontalGallery movies={props.similarMovie} size='w154' title='Similar Movies:'/>
+          
+          <HorizontalGallery movies={props.similarMovie} size='w154' title='Similar Movies:' setSelectedMovie={props.setSelectedMovie} setMovieCertification={props.setMovieCertification} setSimilarMovie={props.setSimilarMovie} setModalShow={props.setModalShow} />
 
         </Modal.Body>
       </>)}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
@@ -21,10 +21,13 @@ const HorizontalGallery =(props)=>{
         `https://api.themoviedb.org/3/movie/${movieId}/release_dates?api_key=76ea622ca12a2d949e9e760bca3806ac`
       );
       // find based on sg country code, iso_3166 is international standard for country codes
-      const sgMovieCert = movieCertification.data.results.find(cert => cert.iso_3166_1 === 'SG');
-      props.setMovieCertification(sgMovieCert.release_dates[0].certification); 
+      const sgMovieCert = movieCertification.data.results.find(cert => cert.iso_3166_1 === 'SG'||cert.iso_3166_1 === 'US');
+      const finalMovieCert = sgMovieCert.release_dates.find(cert=>cert.certification!=="")
+      // props.setMovieCertification(sgMovieCert.release_dates[0].certification); 
+      props.setMovieCertification(finalMovieCert.certification); 
+      
     } catch(err){
-      console.log(err);
+      console.log("err",err);
     }
   };
   const getMovieSimilar = async(movieId)=>{
@@ -41,6 +44,7 @@ const HorizontalGallery =(props)=>{
 
   const handleClick = (movie) =>{
     props.setModalShow(true);
+    console.log('test')
     // props.setSelectedMovie(movie);
     getMovieDetails(movie.id);
     getMovieCertification(movie.id);
